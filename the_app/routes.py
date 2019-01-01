@@ -1,6 +1,8 @@
 from the_app import app
+from flask import render_template
+from the_app.forms import EmailForm
 
-@app.route('/')
-@app.route('/send')
+@app.route('/send', methods='GET', 'POST')
 def send():
-	return "app being built"
+	form = EmailForm()
+	return render_template('sendmail.html', form=form)
